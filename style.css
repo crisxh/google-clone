@@ -1,0 +1,440 @@
+@charset "UTF-8";
+* {
+  font-family: sans-serif;
+}
+
+#main {
+  min-height: 30vh;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+nav div {
+  text-align: center;
+}
+nav ul {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+}
+nav ul > li {
+  list-style-type: none;
+  padding: 0 5%;
+}
+nav .navLoginContainer {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: 150px 50px 125px;
+}
+nav .navContainer {
+  width: 30%;
+}
+nav .collapsedNavContainer {
+  display: none;
+}
+nav #sidebarNav {
+  display: none;
+}
+
+nav a {
+  font-size: 0.8em;
+  margin: 2px;
+  text-decoration: none;
+  color: black;
+}
+nav a:hover {
+  text-decoration: underline;
+  color: black;
+  cursor: pointer;
+}
+
+.loginBtn {
+  height: 35px;
+  width: 125px;
+  font-size: 0.8em;
+  background-color: #1a73e8;
+}
+#appsWrap {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5em;
+  padding: 5px;
+}
+#appsWrap:hover {
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+
+#listAppsContainer {
+  display: none;
+  position: absolute;
+  top: 80px;
+  right: 2%;
+  height: 300px;
+  width: 300px;
+  background-color: white;
+  overflow-y: scroll;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px grey;
+  padding: 5%;
+}
+#listAppsContainer #listAppsBtn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#listApps {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px;
+  font-size: 3em;
+}
+#listApps i {
+  background: linear-gradient(90deg, #008744, #ffa700, #0057e7, #d62d20);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#listApps i:hover {
+  cursor: pointer;
+  color: green;
+}
+
+#searchLogo {
+  text-align: center;
+  width: 100%;
+  justify-content: center;
+  padding-top: 5%;
+  padding-bottom: 2%;
+}
+
+#searchContainer {
+  display: grid;
+  grid-template-rows: fit-content;
+  grid-template-columns: 80%;
+  justify-content: center;
+  row-gap: 5%;
+  width: 100%;
+  padding-bottom: 20%;
+}
+
+.searchBtns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  justify-self: center;
+}
+
+.searchBtn {
+  display: inline-block;
+  background-color: #ebebeb;
+  font-size: 12px;
+  width: 145px;
+  height: 35px;
+}
+.searchBtn:hover {
+  box-shadow: 0 0 2px grey;
+}
+
+.typingValue {
+  display: none;
+  padding-left: 50px;
+  margin-top: 2px;
+  width: 80%;
+  box-shadow: 0px -1px 0px #e3e3e3;
+  text-align: left;
+  overflow-wrap: break-word;
+  align-self: center;
+  inline-width: 50px;
+}
+
+.focusedWrap {
+  outline: none;
+  border-radius: 15px;
+  box-shadow: 2px 2px 8px lightgrey, 0px -1px 5px lightgrey !important;
+}
+
+.focusedContainer:before, .focusedContainer:after {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#searchBoxContainerWrap {
+  box-shadow: 0px -1px 0px 0px #e3e3e3, 0px 1px 0px 0px #e3e3e3, -1px 0px 0px #e3e3e3, 1px 0px 0px #e3e3e3;
+  height: fit-content;
+  border-radius: 15px;
+  width: 60%;
+  justify-self: center;
+}
+#searchBoxContainerWrap:hover {
+  outline: none;
+  border-radius: 15px;
+  box-shadow: 2px 2px 8px lightgrey, 0px -1px 5px lightgrey;
+  outline: none;
+}
+#searchBoxContainerWrap:hover:before, #searchBoxContainerWrap:hover:after {
+  border: none;
+}
+
+#searchBoxContainerWrapReplace {
+  display: none;
+  width: 70%;
+  justify-self: center;
+  text-align: center;
+}
+
+#searchBoxContainer {
+  display: flex;
+  justify-content: center;
+  align-items: space-between;
+  height: fit-content;
+  border-left: none;
+  border-right: none;
+  width: 100%;
+  height: 30px;
+}
+#searchBoxContainer:before, #searchBoxContainer:after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 1em;
+  color: grey;
+}
+#searchBoxContainer::before {
+  content: "";
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  width: 40px;
+  box-shadow: -1px -1px 0px 0px #e3e3e3, 0px 1px 0px 0px #e3e3e3;
+  text-align: center;
+}
+#searchBoxContainer::before:focus, #searchBoxContainer::before:hover {
+  outline: none;
+  border: none;
+}
+#searchBoxContainer:after {
+  content: " ";
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  box-shadow: 0px -1px 0px 0px #e3e3e3, 1px 1px 0px 0px #e3e3e3;
+  width: 40px;
+  text-align: center;
+}
+#suggestion {
+  display: none;
+  position: relative;
+  top: 100%;
+  width: 200%;
+  background-color: blue;
+  height: 200px;
+  z-index: 50;
+}
+
+.searchSuggestions {
+  position: absolute;
+  background-color: white;
+  z-index: 99;
+  border-radius: 15px;
+}
+.searchSuggestions #searchBoxContainer:before, .searchSuggestions #searchBoxContainer:after {
+  box-shadow: none;
+}
+
+.searchBoxNotNull:after {
+  content: "" !important;
+  cursor: pointer;
+}
+
+.searchBox {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  border: none;
+}
+.searchBox:focus {
+  border: none;
+  outline: none;
+}
+
+.idiomas {
+  text-align: center;
+  font-size: 0.8em;
+}
+.idiomas a {
+  color: darkblue;
+  text-decoration: none;
+}
+.idiomas a:hover {
+  text-decoration: underline;
+}
+
+#idiomasNav {
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 1px 1px lightgrey;
+  margin-top: 0px;
+  height: 40px;
+}
+
+.fa-leaf {
+  color: green;
+}
+
+.emision {
+  padding: 1%;
+}
+
+#footerNav {
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: #f2f2f2;
+  gap: 2%;
+  padding: 20px;
+  box-shadow: 0px -1px 5px #e3e3e3;
+}
+#footerNav a {
+  font-size: 0.8em;
+  color: black;
+  text-decoration: none;
+  padding: 2%;
+}
+#footerNav a:hover {
+  text-decoration: underline;
+}
+#footerNav div:nth-child(1) {
+  grid-column: span 4;
+}
+#footerNav div:not(:first-child) {
+  text-align: center;
+}
+
+@media (max-width: 950px) {
+  #footerNav {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  #footerNav div:nth-child(4), #footerNav div:nth-child(2) {
+    grid-column: span 2;
+  }
+  #footerNav div:nth-child(3) {
+    grid-column: span 4;
+    text-align: center;
+    order: -1;
+  }
+  #footerNav div:nth-child(1) {
+    grid-column: span 4;
+    order: -1;
+  }
+}
+#searchBoxContainerWrap {
+  width: 100%;
+}
+
+@media (max-width: 650px) {
+  nav .navContainer {
+    display: none;
+  }
+  nav .collapsedNavContainer {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 2em;
+    width: 50%;
+    cursor: pointer;
+  }
+  nav .navLoginContainer {
+    grid-template-columns: 1fr 2fr;
+    justify-content: end;
+  }
+  nav #appsWrap {
+    font-size: 2em;
+  }
+  nav .navLoginContainer ul {
+    display: none;
+  }
+
+  #sidebarNav {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    z-index: 55;
+    background-color: white;
+    height: 100vh;
+    width: 200px;
+    padding: 5%;
+    box-shadow: 0px 0px 5px lightgrey;
+  }
+  #sidebarNav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0px;
+  }
+  #sidebarNav ul > li {
+    font-size: 1.5em;
+    border-bottom: 1px solid grey;
+  }
+
+  #footerNav {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  #footerNav div:not(:first-child) {
+    grid-column: span 4;
+  }
+
+  #footerNav > div:nth-child(3) {
+    grid-column: span 4;
+    text-align: center;
+    order: -1;
+  }
+
+  #footerNav > div:nth-child(1) {
+    grid-column: span 4;
+    order: -1;
+  }
+}
+@media (max-width: 380px) {
+  nav {
+    padding-left: 0px;
+    justify-content: flex-end;
+  }
+  nav .navContainer {
+    display: none;
+  }
+  nav .navLoginContainer ul {
+    display: none;
+  }
+  nav .collapsedNavContainer {
+    display: flex;
+    justify-content: flex-start;
+    display: block;
+    font-size: 2em;
+    padding: 2%;
+    width: 50%;
+    cursor: pointer;
+  }
+  nav .navLoginContainer {
+    grid-template-columns: 1fr 1fr;
+    justify-content: end;
+  }
+  nav #appsWrap {
+    font-size: 2em;
+  }
+}
+#main {
+  min-height: 70vh;
+}
